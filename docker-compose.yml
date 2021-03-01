@@ -1,0 +1,14 @@
+# For development
+version: "3.8"
+
+services:
+  keycloak:
+    image: jboss/keycloak:12.0.2
+    environment:
+      KEYCLOAK_USER: admin
+      KEYCLOAK_PASSWORD: admin
+      KEYCLOAK_IMPORT: "/tmp/realm-export.json"
+    volumes:
+      - "./keycloak/realm-export.json:/tmp/realm-export.json"
+    ports:
+      - 8080:8080
