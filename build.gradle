@@ -6,7 +6,7 @@ plugins {
 
 group = 'com.github.vanbv.list.keep'
 version = '0.0.1-SNAPSHOT'
-sourceCompatibility = '15'
+sourceCompatibility = '16'
 
 repositories {
 	mavenCentral()
@@ -20,7 +20,7 @@ dependencyManagement {
 
 dependencies {
 	implementation('org.springframework.boot:spring-boot-starter-web') {
-		exclude module: "spring-boot-starter-tomcat"
+		exclude module: 'spring-boot-starter-tomcat'
 	}
 	implementation ('org.keycloak:keycloak-spring-boot-starter') {
 		exclude module: 'spring-boot-starter-tomcat'
