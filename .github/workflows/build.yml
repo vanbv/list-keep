@@ -20,7 +20,7 @@ jobs:
     - name: Grant execute permission for gradlew
       run: chmod +x gradlew
     - name: Build a container image from our Spring Boot app using Paketo.io / Cloud Native Build Packs
-      run: ./gradlew bootBuildImage --imageName=list-keep:0.0.1-SNAPSHOT
+      run: ./gradlew bootBuildImage
     - name: Tag & publish to GitHub Container Registry
       run: |
         docker tag list-keep:0.0.1-SNAPSHOT ghcr.io/vanbv/list-keep:latest
