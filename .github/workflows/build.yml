@@ -23,5 +23,5 @@ jobs:
       run: ./gradlew bootBuildImage
     - name: Tag & publish to GitHub Container Registry
       run: |
-        docker tag list-keep:0.0.1-SNAPSHOT ghcr.io/vanbv/list-keep:latest
+        docker tag docker.io/library/list-keep:0.0.1-SNAPSHOT ghcr.io/vanbv/list-keep:latest
         docker push ghcr.io/vanbv/list-keep:latest
