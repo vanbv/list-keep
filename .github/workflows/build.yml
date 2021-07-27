@@ -11,7 +11,7 @@ jobs:
     - name: Set up JDK 16
       uses: actions/setup-java@v2
       with:
-        java-version: '15'
+        java-version: '16'
         distribution: 'adopt'
     - name: Login to GitHub Container Registry
       run: echo $PAT | docker login ghcr.io -u vanbv --password-stdin
@@ -20,7 +20,7 @@ jobs:
     - name: Grant execute permission for gradlew
       run: chmod +x gradlew
     - name: Build a container image from our Spring Boot app using Paketo.io / Cloud Native Build Packs
-      run: ./gradlew bootBuildImage --imageName=list-keep:0.0.1-SNAPSHOT --stacktrace
+      run: ./gradlew bootBuildImage --imageName=list-keep:0.0.1-SNAPSHOT
     - name: Tag & publish to GitHub Container Registry
       run: |
         docker tag list-keep:0.0.1-SNAPSHOT ghcr.io/vanbv/list-keep:latest
