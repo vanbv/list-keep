@@ -16,7 +16,7 @@ jobs:
     - name: Login to GitHub Container Registry
       run: echo $PAT | docker login ghcr.io -u vanbv --password-stdin
       env:
-        PAT: ${{ secrets.PAT }}
+        PAT: ${{ secrets.GITHUB_TOKEN }}
     - name: Grant execute permission for gradlew
       run: chmod +x gradlew
     - name: Build a container image from our Spring Boot app using Paketo.io / Cloud Native Build Packs
