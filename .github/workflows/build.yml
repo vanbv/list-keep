@@ -2,6 +2,9 @@ name: build
 
 on: [push]
 
+env:
+  IMAGE_NAME: list-keep
+
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -18,8 +21,10 @@ jobs:
     - name: Grant execute permission for gradlew
       run: chmod +x gradlew
     - name: Build a container image from our Spring Boot app using Paketo.io / Cloud Native Build Packs
-      run: ./gradlew bootBuildImage
+      run: ./gradlew bootBuildImage --imageName=$IMAGE_NAME
     - name: Tag & publish to GitHub Container Registry
       run: |
-        docker tag list-keep:0.0.1-SNAPSHOT ghcr.io/vanbv/list-keep:latest
-        docker push ghcr.io/vanbv/list-keep:latest
+        IMAGE_ID=ghcr.io/${{ github.repository_owner }}/$IMAGE_NAME
+        VERSION=latest
+        docker tag $IMAGE_NAME $IMAGE_ID:$VERSION
+        docker push $IMAGE_ID:$VERSION
