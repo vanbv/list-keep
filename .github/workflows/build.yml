@@ -21,7 +21,7 @@ jobs:
     - name: Grant execute permission for gradlew
       run: chmod +x gradlew
     - name: Build a container image from our Spring Boot app using Paketo.io / Cloud Native Build Packs
-      run: ./gradlew bootBuildImage --imageName=$IMAGE_NAME:v1
+      run: ./gradlew bootBuildImage --imageName=$IMAGE_NAME
     - name: Tag & publish to GitHub Container Registry
       run: |
         IMAGE_ID=ghcr.io/${{ github.repository_owner }}/$IMAGE_NAME
