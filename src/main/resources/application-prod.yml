@@ -2,7 +2,7 @@ server:
   port: 8082
 
 keycloak:
-  auth-server-url: http://list-keep-keycloak
+  auth-server-url: http://keycloak-vanbv-dev.apps.sandbox.x8i5.p1.openshiftapps.com
   realm: "list-keep"
   resource: "list-keep"
   bearer-only: true
