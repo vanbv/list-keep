@@ -12,6 +12,7 @@ keycloak:
       securityCollections:
         - patterns:
             - /api/*
+  ssl-required: none
 
 logging:
   level:
