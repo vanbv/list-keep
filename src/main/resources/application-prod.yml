@@ -13,7 +13,3 @@ keycloak:
         - patterns:
             - /api/*
   ssl-required: none
-
-logging:
-  level:
-    ROOT: TRACE
