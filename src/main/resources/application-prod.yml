@@ -12,3 +12,7 @@ keycloak:
       securityCollections:
         - patterns:
             - /api/*
+
+logging:
+  level:
+    ROOT: TRACE
