@@ -49,7 +49,7 @@ jobs:
       - name: Tag & publish to GitHub Container Registry
         if: github.event_name != 'pull_request'
         run: |
-          for tag in ${steps.meta.outputs.tags}
+          for tag in "${{ steps.meta.outputs.tags }}"
           do
             if [ $IMAGE_LATEST != $tag ]; then
               docker tag $IMAGE_LATEST $tag
