@@ -53,4 +53,4 @@ jobs:
           do
             docker tag $IMAGE_LATEST $tag
           done
-          docker push $IMAGE_LATEST -a
+          docker push $REGISTRY/$IMAGE_NAME -a
