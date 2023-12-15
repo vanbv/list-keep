@@ -36,14 +36,14 @@ jobs:
       - name: Grant execute permission for gradlew
         run: chmod +x gradlew
 
-      - name: Build a container image from our Spring Boot app using Paketo.io / Cloud Native Build Packs
-        run: ./gradlew bootBuildImage --imageName=$IMAGE_NAME
-
       - name: Extract Docker metadata
         id: meta
         uses: docker/metadata-action@v5
         with:
           images: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}
+
+      - name: Build a container image from our Spring Boot app using Paketo.io / Cloud Native Build Packs
+        run: ./gradlew bootBuildImage --imageName=$IMAGE_NAME --tags=${{ steps.meta.outputs.tags }}
 
       - name: Tag & publish to GitHub Container Registry
         if: github.event_name != 'pull_request'
@@ -51,6 +51,5 @@ jobs:
           IMAGE_ID=$REGISTRY/${{ github.repository_owner }}/$IMAGE_NAME
           for tag in ${{ steps.meta.outputs.tags }}
           do
-            docker tag $IMAGE_NAME $IMAGE_ID:$tag
-            docker push $IMAGE_ID:$tag
+            docker push $tag
           done
