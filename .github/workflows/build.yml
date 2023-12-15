@@ -48,7 +48,7 @@ jobs:
       - name: Tag & publish to GitHub Container Registry
         if: github.event_name != 'pull_request'
         run: |
-          while IFS= read -r line; do
+          while IFS= read -r tag; do
             docker tag $IMAGE_NAME $tag
             docker push $tag
           done <<< "${{ steps.meta.outputs.tags }}"
