@@ -1,6 +1,6 @@
 #!/bin/bash
 
-export KEYCLOAK_URL=http://localhost:8080/auth
+export KEYCLOAK_URL=http://localhost:8080
 export KEYCLOAK_USERNAME=admin
 export KEYCLOAK_PASSWORD=admin
 

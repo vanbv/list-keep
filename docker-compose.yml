@@ -3,9 +3,10 @@ version: "3.8"
 
 services:
   keycloak:
-    image: jboss/keycloak:12.0.2
+    image: keycloak/keycloak:23.0
     environment:
-      KEYCLOAK_USER: admin
-      KEYCLOAK_PASSWORD: admin
+      KEYCLOAK_ADMIN: admin
+      KEYCLOAK_ADMIN_PASSWORD: admin
+    command: start-dev
     ports:
       - 8080:8080

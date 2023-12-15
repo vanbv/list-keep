@@ -21,7 +21,7 @@ Before starting replace the `**********` values in file `realm-export.json` as f
     * `from` and `user` - email address
 * `identityProviders` is configured for `google` (`providerId` = `google`).
     * `clientId` - `Client ID` of application in google
-    * `Client secret` - `Client secret` of application in google
+    * `clientSecret` - `Client secret` of application in google
 
 ## Frontend
 [List Keep Front](https://github.com/vanbv/list-keep-front)

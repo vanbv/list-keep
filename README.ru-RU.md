@@ -21,7 +21,7 @@
   * `from` и `user` - адрес почты
 * `identityProviders` сконфигурированный для `google` (`providerId` = `google`).
   * `clientId` - `Client ID` приложения в google
-  * `Client secret` - `Client secret` приложения в google
+  * `clientSecret` - `Client secret` приложения в google
 
 ## Клиентская часть
 [List Keep Front](https://github.com/vanbv/list-keep-front)

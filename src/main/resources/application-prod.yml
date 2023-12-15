@@ -1,15 +1,9 @@
 server:
   port: 8082
 
-keycloak:
-  auth-server-url: ${KEYCLOAK_URL}
-  realm: "list-keep"
-  resource: "list-keep"
-  bearer-only: true
-  security-constraints:
-    - authRoles:
-        - uma_authorization
-      securityCollections:
-        - patterns:
-            - /api/*
-  ssl-required: none
+spring:
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+          issuer-uri: ${KEYCLOAK_URL}

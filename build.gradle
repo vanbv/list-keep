@@ -1,35 +1,27 @@
 plugins {
-	id 'org.springframework.boot' version '2.4.2'
-	id 'io.spring.dependency-management' version '1.0.11.RELEASE'
 	id 'java'
+	id 'org.springframework.boot' version '3.2.0'
+	id 'io.spring.dependency-management' version '1.1.4'
 }
 
 group = 'com.github.vanbv.list.keep'
 version = '0.0.1-SNAPSHOT'
-sourceCompatibility = '17'
+
+java {
+	sourceCompatibility = '21'
+}
 
 repositories {
 	mavenCentral()
 }
 
-dependencyManagement {
-	imports {
-		mavenBom 'org.keycloak.bom:keycloak-adapter-bom:12.0.3'
-	}
-}
-
 dependencies {
-	implementation('org.springframework.boot:spring-boot-starter-web') {
-		exclude module: 'spring-boot-starter-tomcat'
-	}
-	implementation ('org.keycloak:keycloak-spring-boot-starter') {
-		exclude module: 'spring-boot-starter-tomcat'
-	}
-	implementation 'org.springframework.boot:spring-boot-starter-undertow'
+	implementation 'org.springframework.boot:spring-boot-starter-web'
+	implementation 'org.springframework.boot:spring-boot-starter-oauth2-resource-server'
 	implementation 'org.springframework.boot:spring-boot-starter-actuator'
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 }
 
-test {
+tasks.named('test') {
 	useJUnitPlatform()
 }

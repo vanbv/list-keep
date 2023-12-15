@@ -1,14 +1,9 @@
 server:
   port: 8082
 
-keycloak:
-  auth-server-url: http://localhost:8080/auth
-  realm: "list-keep"
-  resource: "list-keep"
-  bearer-only: true
-  security-constraints:
-    - authRoles:
-        - uma_authorization
-      securityCollections:
-        - patterns:
-            - /api/*
+spring:
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+          issuer-uri: http://localhost:8080/realms/list-keep
