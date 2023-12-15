@@ -10,7 +10,6 @@ on:
 env:
   REGISTRY: ghcr.io
   IMAGE_NAME: ${{ github.repository }}
-  IMAGE_LATEST: ghcr.io/${{ github.repository }}:latest
 
 jobs:
   build:
@@ -44,15 +43,12 @@ jobs:
           images: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}
 
       - name: Build a container image from our Spring Boot app using Paketo.io / Cloud Native Build Packs
-        run: ./gradlew bootBuildImage --imageName=$IMAGE_LATEST
+        run: ./gradlew bootBuildImage --imageName=$IMAGE_NAME
 
       - name: Tag & publish to GitHub Container Registry
         if: github.event_name != 'pull_request'
         run: |
-          for tag in "${{ steps.meta.outputs.tags }}"
-          do
-            if [ $IMAGE_LATEST != $tag ]; then
-              docker tag $IMAGE_LATEST $tag
-            fi
-          done
-          docker push $REGISTRY/$IMAGE_NAME -a
+          while IFS= read -r line; do
+            docker tag $IMAGE_NAME $tag
+            docker push $tag
+          done <<< "${{ steps.meta.outputs.tags }}"
