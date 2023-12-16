@@ -45,11 +45,10 @@ jobs:
       - name: Build a container image from our Spring Boot app using Paketo.io / Cloud Native Build Packs
         run: ./gradlew bootBuildImage --imageName=$IMAGE_NAME
 
-      - name: Build and push Docker image
-        id: build-and-push
-        uses: docker/build-push-action@v5
-        with:
-          context: .
-          push: ${{ github.event_name != 'pull_request' }}
-          tags: ${{ steps.meta.outputs.tags }}
-          labels: ${{ steps.meta.outputs.labels }}
+      - name: Tag & publish to GitHub Container Registry
+        if: github.event_name != 'pull_request'
+        run: |
+          while IFS= read -r tag; do
+            docker tag $IMAGE_NAME $tag
+            docker push $tag
+          done <<< "${{ steps.meta.outputs.tags }}"
