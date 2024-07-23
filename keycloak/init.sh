@@ -11,5 +11,3 @@ ACCESS_TOKEN=$(echo $DIRECT_GRANT_RESPONSE | grep "access_token" | sed 's/.*\"ac
 export ACCESS_TOKEN
 
 curl -i -k --request POST $KEYCLOAK_URL/admin/realms -d "@realm-export.json" --header "Content-Type: application/json" --header "Authorization: Bearer $ACCESS_TOKEN";
-
-curl -i -k --request POST $KEYCLOAK_URL/admin/realms/list-keep/localization/ru -F "file=@ru.json" --header "Content-Type: multipart/form-data" --header "Authorization: Bearer $ACCESS_TOKEN";
