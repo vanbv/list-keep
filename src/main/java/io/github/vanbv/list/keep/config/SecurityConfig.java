@@ -1,4 +1,4 @@
-package com.github.vanbv.list.keep.config;
+package io.github.vanbv.list.keep.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

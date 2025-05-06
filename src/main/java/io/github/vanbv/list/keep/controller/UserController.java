@@ -1,6 +1,6 @@
-package com.github.vanbv.list.keep.controller;
+package io.github.vanbv.list.keep.controller;
 
-import com.github.vanbv.list.keep.model.User;
+import io.github.vanbv.list.keep.dto.User;
 import org.springframework.security.core.Authentication;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;

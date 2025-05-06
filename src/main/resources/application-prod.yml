@@ -2,6 +2,10 @@ server:
   port: 8082
 
 spring:
+  datasource:
+    url: jdbc:postgresql://list-keep-postgresql:5432/postgres
+    username: postgres
+    password: ${POSTGRES_PASSWORD}
   security:
     oauth2:
       resourceserver:

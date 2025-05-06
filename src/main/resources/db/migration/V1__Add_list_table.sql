@@ -1,0 +1,4 @@
+CREATE TABLE list (
+      id UUID PRIMARY KEY,
+      name CHARACTER VARYING(100) NOT NULL
+);
