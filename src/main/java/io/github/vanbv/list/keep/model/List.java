@@ -12,6 +12,7 @@ public class List {
     @GeneratedValue
     private UUID id;
     private String name;
+    private UUID userId;
 
     public UUID getId() {
         return id;
@@ -27,5 +28,13 @@ public class List {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public UUID getUserId() {
+        return userId;
+    }
+
+    public void setUserId(UUID userId) {
+        this.userId = userId;
     }
 }

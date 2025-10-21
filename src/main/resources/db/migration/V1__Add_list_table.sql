@@ -1,4 +1,5 @@
 CREATE TABLE list (
       id UUID PRIMARY KEY,
-      name CHARACTER VARYING(100) NOT NULL
+      name CHARACTER VARYING(100) NOT NULL,
+      user_id UUID NOT NULL
 );
