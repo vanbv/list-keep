@@ -8,6 +8,7 @@ import org.springframework.security.core.Authentication;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Collection;
+import java.util.UUID;
 
 @RestController
 @RequestMapping("/api/v1/lists")
@@ -26,5 +27,10 @@ public class ListController {
     @GetMapping
     public Collection<ListDto> getAll(Authentication authentication) {
         return listService.getAll(authentication.getName());
+    }
+
+    @GetMapping("/{id}")
+    public ListDto get(@PathVariable UUID id, Authentication authentication) {
+        return listService.get(id, authentication.getName());
     }
 }

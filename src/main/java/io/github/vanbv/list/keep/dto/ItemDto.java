@@ -2,4 +2,4 @@ package io.github.vanbv.list.keep.dto;
 
 import java.util.UUID;
 
-public record ListDto(UUID id, String name) {}
+public record ItemDto(UUID id, String name) {}

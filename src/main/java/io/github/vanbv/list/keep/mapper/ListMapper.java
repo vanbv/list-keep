@@ -18,6 +18,10 @@ public class ListMapper {
     }
 
     public Collection<ListDto> map(Collection<List> source) {
-        return source.stream().map(list -> new ListDto(list.getName())).toList();
+        return source.stream().map(this::map).toList();
+    }
+
+    public ListDto map(List source) {
+        return new ListDto(source.getId(), source.getName());
     }
 }

@@ -3,3 +3,11 @@ CREATE TABLE list (
       name CHARACTER VARYING(100) NOT NULL,
       user_id UUID NOT NULL
 );
+
+CREATE TABLE item (
+    id UUID PRIMARY KEY,
+    name CHARACTER VARYING(100) NOT NULL,
+    list_id UUID NOT NULL REFERENCES list
+);
+
+CREATE INDEX ON item(list_id);
