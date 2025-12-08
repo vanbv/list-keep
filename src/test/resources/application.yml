@@ -1,0 +1,8 @@
+spring:
+  datasource:
+    url: jdbc:tc:postgresql:17.3:///postgres
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+          issuer-uri: http://stub
