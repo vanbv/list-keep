@@ -1,4 +1,6 @@
 spring:
+  datasource:
+    url: jdbc:tc:postgresql:18.1:///postgres
   security:
     oauth2:
       resourceserver:
