@@ -3,7 +3,7 @@ server:
 
 spring:
   datasource:
-    url: jdbc:postgresql://list-keep-postgres:5432/postgres
+    url: jdbc:postgresql://list-keep-db:5432/postgres
     username: postgres
     password: ${POSTGRES_PASSWORD}
   security:
