@@ -2,10 +2,10 @@ server:
   port: 8082
 
 spring:
-  datasource:
-    url: jdbc:postgresql://localhost:5432/postgres
-    username: postgres
-    password: postgres
+  docker:
+    compose:
+      enabled: true
+      file: docker-compose.yml
   security:
     oauth2:
       resourceserver:
