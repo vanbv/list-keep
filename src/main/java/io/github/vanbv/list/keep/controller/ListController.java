@@ -20,8 +20,8 @@ public class ListController {
     }
 
     @PostMapping
-    public void create(@Valid @RequestBody ListCreateDto list, Authentication authentication) {
-        listService.create(list, authentication.getName());
+    public ListDto create(@Valid @RequestBody ListCreateDto list, Authentication authentication) {
+        return listService.create(list, authentication.getName());
     }
 
     @GetMapping

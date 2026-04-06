@@ -26,8 +26,8 @@ public class ListService {
         this.listMapper = listMapper;
     }
 
-    public void create(ListCreateDto list, String userId) {
-        listRepository.save(listMapper.map(list, userId));
+    public ListDto create(ListCreateDto list, String userId) {
+        return listMapper.map(listRepository.save(listMapper.map(list, userId)));
     }
 
     public Collection<ListDto> getAll(String userId) {
