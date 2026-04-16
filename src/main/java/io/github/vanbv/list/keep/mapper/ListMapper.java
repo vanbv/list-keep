@@ -2,6 +2,7 @@ package io.github.vanbv.list.keep.mapper;
 
 import io.github.vanbv.list.keep.dto.ListCreateDto;
 import io.github.vanbv.list.keep.dto.ListDto;
+import io.github.vanbv.list.keep.dto.ListUpdateDto;
 import io.github.vanbv.list.keep.model.List;
 import org.springframework.stereotype.Component;
 
@@ -10,10 +11,15 @@ import java.util.UUID;
 
 @Component
 public class ListMapper {
-    public List map(ListCreateDto list, String userId) {
+    public List map(ListCreateDto source, String userId) {
         List destination = new List();
-        destination.setName(list.name());
+        destination.setName(source.name());
         destination.setUserId(UUID.fromString(userId));
+        return destination;
+    }
+
+    public List map(ListUpdateDto source, List destination) {
+        destination.setName(source.name());
         return destination;
     }
 

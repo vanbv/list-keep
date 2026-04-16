@@ -2,6 +2,7 @@ package io.github.vanbv.list.keep.service;
 
 import io.github.vanbv.list.keep.dto.ListCreateDto;
 import io.github.vanbv.list.keep.dto.ListDto;
+import io.github.vanbv.list.keep.dto.ListUpdateDto;
 import io.github.vanbv.list.keep.exception.NotFoundException;
 import io.github.vanbv.list.keep.mapper.ListMapper;
 import io.github.vanbv.list.keep.model.List;
@@ -28,6 +29,10 @@ public class ListService {
 
     public ListDto create(ListCreateDto list, String userId) {
         return listMapper.map(listRepository.save(listMapper.map(list, userId)));
+    }
+
+    public ListDto update(UUID id, ListUpdateDto list, String userId) {
+        return listMapper.map(listRepository.save(listMapper.map(list, getIfExist(id, userId))));
     }
 
     public Collection<ListDto> getAll(String userId) {

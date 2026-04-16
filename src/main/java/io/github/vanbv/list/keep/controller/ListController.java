@@ -2,6 +2,7 @@ package io.github.vanbv.list.keep.controller;
 
 import io.github.vanbv.list.keep.dto.ListCreateDto;
 import io.github.vanbv.list.keep.dto.ListDto;
+import io.github.vanbv.list.keep.dto.ListUpdateDto;
 import io.github.vanbv.list.keep.service.ListService;
 import jakarta.validation.Valid;
 import org.springframework.security.core.Authentication;
@@ -27,6 +28,11 @@ public class ListController {
     @GetMapping
     public Collection<ListDto> getAll(Authentication authentication) {
         return listService.getAll(authentication.getName());
+    }
+
+    @PutMapping("/{id}")
+    public ListDto update(@PathVariable UUID id, @RequestBody ListUpdateDto list, Authentication authentication) {
+        return listService.update(id, list, authentication.getName());
     }
 
     @GetMapping("/{id}")
