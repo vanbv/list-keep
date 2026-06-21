@@ -1,12 +1,10 @@
 package io.github.vanbv.list.keep.controller;
 
 import io.github.vanbv.list.keep.dto.ItemDto;
+import io.github.vanbv.list.keep.dto.ItemUpdateDto;
 import io.github.vanbv.list.keep.service.ItemService;
 import org.springframework.security.core.Authentication;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.Collection;
 import java.util.UUID;
@@ -23,5 +21,15 @@ public class ItemController {
     @GetMapping
     public Collection<ItemDto> getAll(@PathVariable UUID listId, Authentication authentication) {
         return itemService.getAll(listId, authentication.getName());
+    }
+
+    @PutMapping("/{id}")
+    public void update(
+            @PathVariable UUID listId,
+            @PathVariable UUID id,
+            @RequestBody ItemUpdateDto item,
+            Authentication authentication
+    ) {
+        itemService.update(id, listId, item, authentication.getName());
     }
 }

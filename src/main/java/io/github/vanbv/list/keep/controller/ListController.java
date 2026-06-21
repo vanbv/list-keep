@@ -31,8 +31,8 @@ public class ListController {
     }
 
     @PutMapping("/{id}")
-    public ListDto update(@PathVariable UUID id, @RequestBody ListUpdateDto list, Authentication authentication) {
-        return listService.update(id, list, authentication.getName());
+    public void update(@PathVariable UUID id, @RequestBody ListUpdateDto list, Authentication authentication) {
+        listService.update(id, list, authentication.getName());
     }
 
     @GetMapping("/{id}")

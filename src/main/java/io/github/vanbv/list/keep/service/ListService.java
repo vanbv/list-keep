@@ -31,8 +31,8 @@ public class ListService {
         return listMapper.map(listRepository.save(listMapper.map(list, userId)));
     }
 
-    public ListDto update(UUID id, ListUpdateDto list, String userId) {
-        return listMapper.map(listRepository.save(listMapper.map(list, getIfExist(id, userId))));
+    public void update(UUID id, ListUpdateDto list, String userId) {
+        listRepository.save(listMapper.map(list, getIfExist(id, userId)));
     }
 
     public Collection<ListDto> getAll(String userId) {
