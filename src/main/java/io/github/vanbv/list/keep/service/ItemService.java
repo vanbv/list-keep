@@ -1,5 +1,6 @@
 package io.github.vanbv.list.keep.service;
 
+import io.github.vanbv.list.keep.dto.ItemCreateDto;
 import io.github.vanbv.list.keep.dto.ItemDto;
 import io.github.vanbv.list.keep.dto.ItemUpdateDto;
 import io.github.vanbv.list.keep.exception.NotFoundException;
@@ -27,6 +28,11 @@ public class ItemService {
         this.listService = listService;
         this.itemRepository = itemRepository;
         this.itemMapper = itemMapper;
+    }
+
+    public ItemDto create(UUID listId, ItemCreateDto item, String userId) {
+        List list = listService.getIfExist(listId, userId);
+        return itemMapper.map(itemRepository.save(itemMapper.map(item, list)));
     }
 
     public Collection<ItemDto> getAll(UUID listId, String userId) {
